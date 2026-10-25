@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feliz cumpleaños, Ali ♡</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: Georgia, 'Times New Roman', serif;
+            color: #f6dce7;
+            text-align: center;
+            background:
+                radial-gradient(ellipse at top, #49304f 0%, transparent 60%),
+                linear-gradient(135deg, #17182d, #29203b, #482638);
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        .contenedor {
+            max-width: 1000px;
+            margin: 25px auto;
+            padding: 30px;
+            background: rgba(30, 25, 45, 0.94);
+            border: 2px solid #bd668d;
+            border-radius: 8px;
+            box-shadow: 0 0 30px #d65c8c33;
+            position: relative;
+            z-index: 1;
+        }
+
+        h1 {
+            color: #f29ab9;
+            font-size: 2.8em;
+            text-shadow: 2px 2px #772c51;
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            color: #e78eb0;
+            letter-spacing: 2px;
+        }
+
+        .subtitulo {
+            color: #d8c1dc;
+            font-size: 1.15em;
+            font-style: italic;
+        }
+
+        .corazon {
+            color: #ed779f;
+            font-size: 28px;
+            animation: latir 1.2s infinite;
+            display: inline-block;
+        }
+
+        @keyframes latir {
+            50% {
+                transform: scale(1.25);
+            }
+        }
+
+        .separador {
+            color: #e78eb0;
+            letter-spacing: 8px;
+            margin: 18px 0;
+        }
+
+        /* GALERÍA DE FOTOS MÁS GRANDES */
+
+        .galeria {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .galeria img {
+            width: 100%;
+            height: 360px;
+            object-fit: cover;
+            border-radius: 5px;
+            border: 3px solid #d17a9c;
+            box-shadow: 0 5px 18px #00000066;
+            transition: transform 0.3s, filter 0.3s;
+            filter: saturate(0.85);
+        }
+
+        .galeria img:hover {
+            transform: scale(1.025);
+            filter: saturate(1.1);
+        }
+
+        /* BOTONES */
+
+        .boton {
+            background: #a84670;
+            color: #fff0f6;
+            border: 1px solid #f0a2bf;
+            padding: 14px 23px;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            margin: 10px;
+            transition: 0.3s;
+            font-family: Georgia, serif;
+        }
+
+        .boton:hover {
+            background: #d05c8a;
+            transform: translateY(-2px);
+        }
+
+        /* CARTA: TEXTO ORIGINAL SIN CAMBIOS */
+
+        #carta {
+            display: none;
+            text-align: left;
+            line-height: 1.9;
+            white-space: pre-line;
+            background: #f5e5ec;
+            color: #38243a;
+            border: 2px solid #d17a9c;
+            border-radius: 5px;
+            padding: 25px;
+            margin-top: 20px;
+        }
+
+        .final {
+            font-size: 1.25em;
+            color: #f29ab9;
+            font-weight: bold;
+            margin-top: 25px;
+        }
+
+        .nota-musica {
+            color: #d8c1dc;
+            font-size: 0.9em;
+        }
+
+        /* CORAZONES FLOTANTES: SE CONSERVAN */
+
+        .flotante {
+            position: fixed;
+            bottom: -30px;
+            color: #f080a8;
+            font-size: 22px;
+            pointer-events: none;
+            animation: subir 8s linear forwards;
+            z-index: 0;
+            text-shadow: 0 0 8px #e76c9b88;
+        }
+
+        @keyframes subir {
+            from {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0.9;
+            }
+
+            to {
+                transform: translateY(-110vh) rotate(25deg);
+                opacity: 0;
+            }
+        }
+
+        /* DETALLES DECORATIVOS */
+
+        .etiqueta {
+            display: inline-block;
+            color: #f3b2cb;
+            border-top: 1px solid #bd668d;
+            border-bottom: 1px solid #bd668d;
+            padding: 8px 18px;
+            margin: 12px 0;
+            letter-spacing: 3px;
+            font-size: 0.85em;
+        }
+
+        /* ADAPTACIÓN PARA CELULARES */
+
+        @media (max-width: 600px) {
+            body {
+                padding: 10px;
+            }
+
+            .contenedor {
+                padding: 16px;
+                margin: 12px auto;
+            }
+
+            h1 {
+                font-size: 2.1em;
+            }
+
+            h2 {
+                font-size: 1.2em;
+                letter-spacing: 1px;
+            }
+
+            .galeria {
+                gap: 12px;
+            }
+
+            .galeria img {
+                height: 260px;
+            }
+
+            .boton {
+                padding: 12px 15px;
+                margin: 7px 3px;
+            }
+
+            #carta {
+                padding: 17px;
+                font-size: 0.95em;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .galeria img {
+                height: 210px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- CANCIÓN DESCARGADA -->
+    <audio id="musicaFondo" autoplay loop>
+        <source src="cancion.mp3.ogg" type="audio/mpeg">
+        Tu navegador no puede reproducir este audio.
+    </audio>
+
+    <div class="contenedor">
+
+        <div class="corazon">♡</div>
+
+        <h1>¡Feliz cumpleaños, Ali!</h1>
+
+        <p class="subtitulo">
+            Para una personita que se volvió muy especial para mí.
+        </p>
+
+        <div class="etiqueta">
+            A LITTLE PIECE OF US ♡
+        </div>
+
+        <div class="separador">✦ ♡ ✦</div>
+
+        <h2>Un pedacito de nosotras 🎀</h2>
+
+        <div class="galeria">
+            <img src="imagen1.jpeg" alt="Un recuerdo especial">
+            <img src="imagen2.jpeg" alt="Un recuerdo juntas">
+            <img src="imagen3.jpeg" alt="Una foto bonita">
+            <img src="imagen4.jpeg" alt="Otro recuerdo especial">
+        </div>
+
+        <div class="separador">♡ ୨ৎ ♡</div>
+
+        <button class="boton" onclick="mostrarCarta()">
+            💌 Abre tu cartita
+        </button>
+
+        <button class="boton" onclick="reproducirMusica()">
+            🎵 Reproducir canción
+        </button>
+
+        <p class="nota-musica" id="estadoMusica">
+            Una canción para ti ♡
+        </p>
+
+        <div id="carta">
+Feliz cumpleaños, Ali. 💗
+
+La verdad, nunca pensé que llegaríamos a conectar tanto. Al principio hasta me caías medio mal JAJAJA, pero era porque realmente todavía no te conocía. Después fui descubriendo todas las cosas que tenemos en común y la increíble persona que eres, y qué bueno que nos dimos la oportunidad de conocernos.
+
+Algo que quiero que sepas es que me encanta tu forma de escucharme y de darme consejos. Gracias por estar ahí, por escuchar mis cosas y por ser alguien con quien puedo hablar. Eres una persona muy bonita, no solamente por fuera, sino también por tu forma de ser. Eres amable, respetuosa y tienes algo que hace que las personas te agarren cariño.
+
+De verdad, espero que este nuevo año de tu vida esté lleno de cosas bonitas, de momentos felices, de sueños cumplidos y de personas que te quieran tanto como mereces. Nunca dudes de lo mucho que vales ni de lo especial que eres.
+
+También espero que nuestra amistad dure muchísimo tiempo. Incluso cuando entremos a la universidad, cuando tengamos nuevas responsabilidades o cuando la vida nos lleve por caminos diferentes. Ojalá sigamos hablando, riéndonos de cualquier tontería y contándonos nuestras cosas, aunque ya no nos veamos tan seguido.
+
+Me alegra muchísimo haberte conocido y poder llamarte mi amiga. Gracias por ser tú y por formar parte de mi vida.
+
+Te quiero muchísimo, Ali. Feliz cumpleaños. Que hoy y siempre tengas muchas razones para sonreír. 🎂💗
+
+Con mucho cariño,
+tu amiga. ♡
+        </div>
+
+        <p class="final">
+            Espero que todos tus días tengan un poquito de magia. ✨
+        </p>
+
+        <div class="corazon">♡ ୨ৎ ♡</div>
+
+        <p class="nota-musica">
+            made with love, just for you ♡
+        </p>
+
+    </div>
+
+    <script>
+        // ABRIR Y CERRAR LA CARTA
+        function mostrarCarta() {
+            const carta = document.getElementById("carta");
+
+            if (carta.style.display === "block") {
+                carta.style.display = "none";
+            } else {
+                carta.style.display = "block";
+            }
+        }
+
+        // REPRODUCIR LA CANCIÓN
+        const musica = document.getElementById("musicaFondo");
+        const estado = document.getElementById("estadoMusica");
+
+        function reproducirMusica() {
+            musica.play()
+                .then(() => {
+                    estado.textContent = "Reproduciendo tu canción ♡";
+                })
+                .catch(() => {
+                    estado.textContent =
+                        "No se pudo reproducir. Revisa que cancion.mp3 esté en la misma carpeta.";
+                });
+        }
+
+        // INTENTAR INICIAR LA MÚSICA AUTOMÁTICAMENTE
+        window.addEventListener("load", () => {
+            musica.play()
+                .then(() => {
+                    estado.textContent = "La música está sonando ♡";
+                })
+                .catch(() => {
+                    estado.textContent =
+                        "Toca «Reproducir canción» para escuchar la música ♡";
+                });
+        });
+
+        // CORAZONES FLOTANTES DEL FONDO
+        function crearCorazon() {
+            const corazon = document.createElement("div");
+
+            corazon.className = "flotante";
+            corazon.textContent =
+                Math.random() > 0.5 ? "♡" : "♥";
+
+            corazon.style.left = Math.random() * 100 + "vw";
+
+            corazon.style.animationDuration =
+                (5 + Math.random() * 5) + "s";
+
+            corazon.style.fontSize =
+                (15 + Math.random() * 20) + "px";
+
+            document.body.appendChild(corazon);
+
+            setTimeout(() => {
+                corazon.remove();
+            }, 10000);
+        }
+
+        // CREAR CORAZONES CONTINUAMENTE
+        setInterval(crearCorazon, 700);
+    </script>
+
+</body>
+</html>
